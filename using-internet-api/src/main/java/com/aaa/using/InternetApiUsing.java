@@ -2,6 +2,7 @@ package com.aaa.using;
 
 import com.aaa.api.InternetApi;
 
+import java.util.Iterator;
 import java.util.ServiceLoader;
 
 /**
@@ -13,7 +14,10 @@ import java.util.ServiceLoader;
 public class InternetApiUsing {
     public static void main(String[] args) {
         ServiceLoader<InternetApi> loader = ServiceLoader.load(InternetApi.class);
-        for (InternetApi internetApi : loader) {
+        Iterator iterator = loader.iterator();
+
+        while(iterator.hasNext()) {
+            InternetApi internetApi = (InternetApi)iterator.next();
             internetApi.toChat();
         }
     }
